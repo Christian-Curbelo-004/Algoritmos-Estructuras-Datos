@@ -28,4 +28,20 @@ public class Libro{
         return cantidadEjemplaresDisponibles;
     }
 
+    public void insertar(int agregados){
+        cantidadEjemplaresDisponibles += agregados;
+    }
+
+    public int prestamosLibros(int pedidos) {
+    if (pedidos <= cantidadEjemplaresDisponibles) {
+        cantidadEjemplaresDisponibles -= pedidos;
+        return pedidos;
+    }
+
+    int librosPrestados = cantidadEjemplaresDisponibles;
+    cantidadEjemplaresDisponibles = 0;
+
+    return librosPrestados;
+}
+
 }

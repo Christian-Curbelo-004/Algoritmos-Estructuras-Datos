@@ -1,5 +1,5 @@
 package Ej17;
-
+import java.util.function.Predicate;
 // lista enlazada
 public class listaEnlazada<T> implements  TDALista<T>{
     Nodo<T> primero; // Referencia al primer nodo de la lista || Si la lista esta vacia, primero vale null
@@ -28,9 +28,56 @@ public class listaEnlazada<T> implements  TDALista<T>{
         Nodo<T> actual = primero; // al no estar insertando nada, tengo que crear una referencia auxiliar al primer nodo
 
         while(actual != null){
-            
+            if (criterio.test(actual.dato)){
+                return actual.dato;
+            }
+            actual = actual.siguiente;
         }
+        return null; /*
+        return null  porque el método buscar devuelve un T, si no encontró ningún objeto que cumpla el criterio, 
+        devolvés null para representar que el objeto no fue encontrado.
+        */ 
 
     }
 
+    // contar cantidad de ejempleares
+    @Override
+    public int cantidad(){
+        int contador = 0; // inicializo contador en 0
+        Nodo <T> actual = primero; // empiezo en el primer nodo
+        while (actual!= null){ // mientras que el nodo actual sea distinto a nulo hacer:
+            contador++; // aumenta el contador +1 si el nodo no es nulo
+            actual = actual.siguiente; // avavanza hasta el ultimo nodo
+        }
+        return contador; // devuelve el contador
+    }
+
+    @Override
+    public boolean eliminar(Predicate<T> criterio){
+        Nodo <T> actual = primero;
+        Nodo <T> anterior = null;
+
+        while(actual != null ){
+            if(criterio.test(actual.dato)){
+                if(anterior == null){
+                    primero = actual.siguiente;
+                    
+                }
+                else{
+                    anterior.siguiente = actual.siguiente;
+                }
+                return true;        
+            }
+            anterior = actual;
+            actual = actual.siguiente;
+        }
+        return false;
+    }
+
+
+    @Override
+    public boolean esVacia(){
+        return primero == null;
+    }
+    
 }
