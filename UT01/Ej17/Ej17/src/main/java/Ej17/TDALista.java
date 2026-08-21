@@ -14,5 +14,7 @@ public interface TDALista<T>{
  boolean esVacia();
 
  int cantidad();
+
+ T obtener (int indice);
 }
 

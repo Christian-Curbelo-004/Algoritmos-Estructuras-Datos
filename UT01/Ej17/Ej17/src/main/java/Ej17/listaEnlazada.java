@@ -79,5 +79,20 @@ public class listaEnlazada<T> implements  TDALista<T>{
     public boolean esVacia(){
         return primero == null;
     }
+
     
+    @Override
+    public T obtener (int indice){
+        Nodo <T> actual = primero;
+        int posicion = 0;
+
+        while(actual != null){
+            if(posicion == indice){
+                return actual.dato;
+            }
+            posicion++;
+            actual = actual.siguiente;
+        }
+        return null;
+    }
 }

@@ -1,9 +1,9 @@
 package Ej17;
 
 public class Libro{
-    private String titulo;
-    private double precioReposicion;
-    private String codigo;
+    private final String titulo;
+    private final double precioReposicion;
+    private final String codigo;
     private  int cantidadEjemplaresDisponibles;
 
     public Libro(String titulo, double precioReposicion, String codigo, int cantidadEjemplaresDisponibles){
@@ -24,7 +24,7 @@ public class Libro{
     public String getCodigo(){
         return codigo;
     }
-    public int getCantidadEjemeplaresDisponibles(){
+    public int getCantidadEjemplaresDisponibles(){
         return cantidadEjemplaresDisponibles;
     }
 
