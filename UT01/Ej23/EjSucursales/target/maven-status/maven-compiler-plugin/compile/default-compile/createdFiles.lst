@@ -1,1 +1,5 @@
 EjSucursales\App.class
+EjSucursales\TDALista.class
+EjSucursales\Nodo.class
+EjSucursales\listaEnlazada.class
+EjSucursales\DirectorioSucursales.class
