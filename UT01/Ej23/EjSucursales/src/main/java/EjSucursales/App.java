@@ -36,6 +36,7 @@ public class App{
         System.out.println();
         System.out.println("SUC1 SIN CHICAGO");
 
+        System.out.println("Sucursales");
         directorio.listarSucursales("\n");
 
 
@@ -67,7 +68,7 @@ public class App{
         cargarArchivo("suc3.txt", directorio);
 
         System.out.println();
-        System.out.println("=== SUC3 ===");
+        System.out.println("SUC3");
 
         directorio.listarSucursales(";");
 
