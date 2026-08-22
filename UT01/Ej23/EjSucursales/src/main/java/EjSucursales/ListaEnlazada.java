@@ -1,7 +1,7 @@
 package EjSucursales;
 import java.util.function.Predicate;
 
-public class listaEnlazada<T> implements  TDALista<T>{
+public class ListaEnlazada<T> implements  TDALista<T>{
     Nodo<T> primero; // Referencia al primer nodo de la lista || Si la lista esta vacia, primero vale null
     
     @Override

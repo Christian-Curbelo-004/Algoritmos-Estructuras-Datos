@@ -6,7 +6,7 @@ public class DirectorioSucursales {
 
     // Constructor: crea la lista vacía de sucursales
     public DirectorioSucursales() {
-        sucursales = new listaEnlazada<>();
+        sucursales = new ListaEnlazada<>();
     }
 
     // Agrega una nueva sucursal

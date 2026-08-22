@@ -4,41 +4,92 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class App {
+public class App{
+    public static void main(String[]args) throws FileNotFoundException{
+        DirectorioSucursales directorio;
 
-    public static void main(String[] args) throws FileNotFoundException {
+        directorio = new DirectorioSucursales();
 
-        // Creamos el directorio de sucursales
-        DirectorioSucursales directorio = new DirectorioSucursales();
+        cargarArchivo("sucursales.txt", directorio);
 
-        // Abrimos el archivo ubicado en src/main/resources
-        File archivo = new File("src/main/resources/sucursales.txt");
+        System.out.println("Sucursales");
+        directorio.listarSucursales("\n");
 
-        // Scanner para leer el archivo
-        Scanner scanner = new Scanner(archivo);
+        System.out.println("La cantidad de sucursales" + directorio.cantidadSucursales());
+        
+        directorio = new DirectorioSucursales();
+        System.out.println("Cantidad de sucursales:" + directorio.cantidadSucursales());
+        
+        // sucursal 1
+        directorio = new DirectorioSucursales();
 
-        // Recorremos el archivo línea por línea
-        while (scanner.hasNextLine()) {
+        cargarArchivo("suc1.txt", directorio);
 
-            // Cada línea contiene el nombre de una ciudad
-            String ciudad = scanner.nextLine().trim();
+        System.out.println();
+        System.out.println("sucursal 1:");
+        directorio.listarSucursales("\n");
 
-            // Agregamos la ciudad a la lista
-            directorio.agregarSucursal(ciudad);
-        }
+        System.out.println("Cantidad de sucursales: " + directorio.cantidadSucursales());
 
-        // Cerramos el Scanner
-        scanner.close();
+        directorio.quitarSucursal("Chicago");
 
-        // Mostramos las ciudades cargadas
-        System.out.println("Sucursales:");
+        System.out.println();
+        System.out.println("SUC1 SIN CHICAGO");
 
         directorio.listarSucursales("\n");
 
-        // Mostramos la cantidad total
-        System.out.println(
-            "Cantidad de sucursales: "
-            + directorio.cantidadSucursales()
-        );
+
+        
+        // TAREA 3  suc2.txt
+        
+
+        directorio = new DirectorioSucursales();
+
+        cargarArchivo("suc2.txt", directorio);
+
+        directorio.quitarSucursal("Shenzen");
+        directorio.quitarSucursal("Tokio");
+
+        System.out.println();
+        System.out.println("SUC2 SIN SHENZEN Y TOKIO");
+
+        directorio.listarSucursales("\n");
+
+        System.out.println("Cantidad restante: "+ directorio.cantidadSucursales());
+
+
+        
+        // TAREA 4  suc3.txt
+       
+
+        directorio = new DirectorioSucursales();
+
+        cargarArchivo("suc3.txt", directorio);
+
+        System.out.println();
+        System.out.println("=== SUC3 ===");
+
+        directorio.listarSucursales(";");
+
+        System.out.println();
+    }
+
+
+    public static void cargarArchivo(String nombreArchivo, DirectorioSucursales directorio) throws FileNotFoundException {
+
+        File archivo = new File("src/main/resources/" + nombreArchivo);
+
+        Scanner scanner = new Scanner(archivo);
+
+        while (scanner.hasNextLine()) {
+
+            String ciudad = scanner.nextLine().trim();
+
+            directorio.agregarSucursal(ciudad);
+        }
+
+        scanner.close();
     }
 }
+
+
